@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SmartSchool.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SmartSchool.Controllers
 {
@@ -35,5 +36,32 @@ namespace SmartSchool.Controllers
 				AlunoDisciplinas = null
 			}
 		};
+
+		[HttpGet]
+		public IActionResult GetAlunos()
+		{
+			return Ok(Alunos);
+		}
+
+		[HttpGet("{id:int}")]
+		public IActionResult GetById(int id)
+		{
+			var aluno = Alunos.FirstOrDefault(a => a.Id == id);
+
+			if (aluno == null) return BadRequest("O Aluno não foi encontrado");
+
+			return Ok(aluno);
+		}
+
+		[HttpGet("byName")]
+		public IActionResult GetByName(string nome, string sobrenome)
+		{
+			var aluno = Alunos.FirstOrDefault(a =>
+			a.Name.ToLower().Contains(nome.ToLower()) && a.Sobrenome.ToLower().Contains(sobrenome.ToLower()));
+
+			if (aluno == null) return BadRequest("O Aluno não foi encontrado");
+
+			return Ok(aluno);
+		}
 	}
 }
