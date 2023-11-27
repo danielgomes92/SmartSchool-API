@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Asp.Versioning;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SmartSchool.Data;
 using SmartSchool.Dtos;
@@ -7,8 +8,9 @@ using System.Collections.Generic;
 
 namespace SmartSchool.Controllers
 {
-	[Route("api/[controller]")]
 	[ApiController]
+	[ApiVersion("2.0")]
+	[Route("api/v{version:apiVersion}/[controller]")]
 	public class ProfessorController : ControllerBase
 	{
 		private readonly IRepository _repo;
