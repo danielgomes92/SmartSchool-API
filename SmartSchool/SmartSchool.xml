@@ -4,31 +4,226 @@
         <name>SmartSchool</name>
     </assembly>
     <members>
-        <member name="M:SmartSchool.Controllers.AlunoController.#ctor(SmartSchool.Data.IRepository,AutoMapper.IMapper)">
+        <member name="T:SmartSchool.V1.Controllers.AlunoController">
             <summary>
-            
+            Versão 1 do meu controlador de Alunos
             </summary>
-            <param name="repo"></param>
-            <param name="mapper"></param>
         </member>
-        <member name="M:SmartSchool.Controllers.AlunoController.GetAlunos">
+        <member name="M:SmartSchool.V1.Controllers.AlunoController.GetAlunos">
             <summary>
             Método responsável por retornar todos os alunos
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SmartSchool.Controllers.AlunoController.GetRegister">
+        <member name="M:SmartSchool.V1.Controllers.AlunoController.GetRegister">
             <summary>
             Método responsável por retornar um aluno específico.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SmartSchool.Controllers.AlunoController.GetById(System.Int32)">
+        <member name="M:SmartSchool.V1.Controllers.AlunoController.GetById(System.Int32)">
             <summary>
             Método responsável por retornar apenas um Aluno por meio de ID
             </summary>
             <param name="id"></param>
             <returns></returns>
+        </member>
+        <member name="M:SmartSchool.V1.Controllers.AlunoController.Post(SmartSchool.V1.Dtos.AlunoRegistrarDto)">
+            <summary>
+            Método responsável por Registrar um Aluno
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.V1.Controllers.AlunoController.Put(System.Int32,SmartSchool.V1.Dtos.AlunoRegistrarDto)">
+            <summary>
+            Método responsável por atualizar as informações de um Aluno
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.V1.Controllers.AlunoController.Patch(System.Int32,SmartSchool.V1.Dtos.AlunoRegistrarDto)">
+            <summary>
+            Método responsável por atualizar uma informação de um Aluno
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.V1.Controllers.AlunoController.Delete(System.Int32)">
+            <summary>
+            Método responsável por deletar um Aluno específico
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SmartSchool.V1.Controllers.ProfessorController">
+            <summary>
+            Versão 1 do meu controlador de Professores
+            </summary>
+        </member>
+        <member name="M:SmartSchool.V1.Controllers.ProfessorController.GetProfessores">
+            <summary>
+            Busca todos os Professores registrados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.V1.Controllers.ProfessorController.GetRegister">
+            <summary>
+            Busca um Professor registrado
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.AlunoDto.Id">
+            <summary>
+            Identificação do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.AlunoDto.Matricula">
+            <summary>
+            Número de registro do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.AlunoDto.Nome">
+            <summary>
+            Nome Completo do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.AlunoDto.Telefone">
+            <summary>
+            Telefone do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.AlunoDto.Idade">
+            <summary>
+            Idade do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.AlunoDto.DataInicio">
+            <summary>
+            Início do Período
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.AlunoDto.Ativo">
+            <summary>
+            Se o Aluno se encontra ativo / inativo
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.ProfessorDto.Id">
+            <summary>
+            Identificação do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.ProfessorDto.Registro">
+            <summary>
+            Número de registro do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.ProfessorDto.Nome">
+            <summary>
+            Nome do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.ProfessorDto.Sobrenome">
+            <summary>
+            Sobrenome do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.ProfessorDto.Telefone">
+            <summary>
+            Telefone do Professor
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.ProfessorDto.DataInicio">
+            <summary>
+            Início do Período
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.ProfessorDto.DataFim">
+            <summary>
+            Fim do período
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V1.Dtos.ProfessorDto.Ativo">
+            <summary>
+            Se o professor se encontra ativo / inativo
+            </summary>
+        </member>
+        <member name="T:SmartSchool.V2.Controllers.AlunoController">
+            <summary>
+            Versão 2 do meu controlador de Alunos
+            </summary>
+        </member>
+        <member name="M:SmartSchool.V2.Controllers.AlunoController.GetAlunos">
+            <summary>
+            Método responsável por retornar todos os alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.V2.Controllers.AlunoController.GetById(System.Int32)">
+            <summary>
+            Método responsável por retornar apenas um Aluno por meio de ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.V2.Controllers.AlunoController.Post(SmartSchool.V2.Dtos.AlunoRegistrarDto)">
+            <summary>
+            Método responsável por Registrar um Aluno
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.V2.Controllers.AlunoController.Put(System.Int32,SmartSchool.V2.Dtos.AlunoRegistrarDto)">
+            <summary>
+            Método responsável por atualizar as informações de um Aluno
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.V2.Controllers.AlunoController.Delete(System.Int32)">
+            <summary>
+            Método responsável por deletar um Aluno específico
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SmartSchool.V2.Dtos.AlunoDto.Id">
+            <summary>
+            Identificação do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V2.Dtos.AlunoDto.Matricula">
+            <summary>
+            Número de registro do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V2.Dtos.AlunoDto.Nome">
+            <summary>
+            Nome Completo do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V2.Dtos.AlunoDto.Telefone">
+            <summary>
+            Telefone do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V2.Dtos.AlunoDto.Idade">
+            <summary>
+            Idade do Aluno
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V2.Dtos.AlunoDto.DataInicio">
+            <summary>
+            Início do Período
+            </summary>
+        </member>
+        <member name="P:SmartSchool.V2.Dtos.AlunoDto.Ativo">
+            <summary>
+            Se o Aluno se encontra ativo / inativo
+            </summary>
         </member>
     </members>
 </doc>

@@ -2,25 +2,23 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SmartSchool.Data;
-using SmartSchool.Dtos;
 using SmartSchool.Models;
+using SmartSchool.V2.Dtos;
 using System.Collections.Generic;
 
-namespace SmartSchool.Controllers
+namespace SmartSchool.V2.Controllers
 {
-	[ApiController]
-	[ApiVersion("1.0")]
+	/// <summary>
+	/// Versão 2 do meu controlador de Alunos
+	/// </summary>
+    [ApiController]
+	[ApiVersion("2.0")]
 	[Route("api/v{version:apiVersion}/[controller]")]
 	public class AlunoController : ControllerBase
 	{
 		private readonly IRepository _repo;
 		private readonly IMapper _mapper;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="repo"></param>
-		/// <param name="mapper"></param>
 		public AlunoController(IRepository repo, IMapper mapper)
 		{
 			_mapper = mapper;
@@ -40,16 +38,6 @@ namespace SmartSchool.Controllers
 		}
 
 		/// <summary>
-		/// Método responsável por retornar um aluno específico.
-		/// </summary>
-		/// <returns></returns>
-		[HttpGet("getRegister")]
-		public IActionResult GetRegister()
-		{
-			return Ok(new AlunoRegistrarDto());
-		}
-
-		/// <summary>
 		/// Método responsável por retornar apenas um Aluno por meio de ID
 		/// </summary>
 		/// <param name="id"></param>
@@ -66,6 +54,11 @@ namespace SmartSchool.Controllers
 			return Ok(alunoDto);
 		}
 
+		/// <summary>
+		/// Método responsável por Registrar um Aluno
+		/// </summary>
+		/// <param name="model"></param>
+		/// <returns></returns>
 		[HttpPost]
 		public IActionResult Post(AlunoRegistrarDto model)
 		{
@@ -78,6 +71,12 @@ namespace SmartSchool.Controllers
 			return BadRequest("Aluno não cadastrado");
 		}
 
+		/// <summary>
+		/// Método responsável por atualizar as informações de um Aluno
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="model"></param>
+		/// <returns></returns>
 		[HttpPut("{id}")]
 		public IActionResult Put(int id, AlunoRegistrarDto model)
 		{
@@ -94,22 +93,11 @@ namespace SmartSchool.Controllers
 			return BadRequest("Aluno não atualizado");
 		}
 
-		[HttpPatch("{id}")]
-		public IActionResult Patch(int id, AlunoRegistrarDto model)
-		{
-			var aluno = _repo.GetAlunoById(id);
-			if (aluno == null) 
-				return BadRequest("Aluno não encontrado!");
-
-			_mapper.Map(model, aluno);
-
-			_repo.Update(aluno);
-			if (_repo.SaveChanges())
-				return Created($"/api/aluno/{model.Id}", _mapper.Map<AlunoDto>(aluno));
-
-			return BadRequest("Aluno não atualizado");
-		}
-
+		/// <summary>
+		/// Método responsável por deletar um Aluno específico
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
 		[HttpDelete("{id}")]
 		public IActionResult Delete(int id)
 		{

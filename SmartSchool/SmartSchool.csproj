@@ -7,6 +7,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="V1\NovaPasta1\**" />
+	  <Compile Remove="V1\NovaPasta\**" />
+	  <Content Remove="V1\NovaPasta1\**" />
+	  <Content Remove="V1\NovaPasta\**" />
+	  <EmbeddedResource Remove="V1\NovaPasta1\**" />
+	  <EmbeddedResource Remove="V1\NovaPasta\**" />
+	  <None Remove="V1\NovaPasta1\**" />
+	  <None Remove="V1\NovaPasta\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Asp.Versioning.Mvc" Version="6.4.0" />
 		<PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="6.4.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
