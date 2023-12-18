@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SmartSchool.Helpers;
 using SmartSchool.Models;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SmartSchool.Data
 {
@@ -30,6 +33,33 @@ namespace SmartSchool.Data
 		public bool SaveChanges()
 		{
 			return (_context.SaveChanges() > 0);
+		}
+
+		public async Task<PageList<Aluno>> GetAllAlunosAsync(
+			PageParams pageParams,
+			bool includeProfessor = false)
+		{
+			IQueryable<Aluno> query = _context.Alunos;
+
+			if (includeProfessor)
+				query = query.Include(a => a.AlunoDisciplinas)
+					.ThenInclude(ad => ad.Disciplina)
+					.ThenInclude(d => d.Professor);
+
+			query = query.AsNoTracking().OrderBy(a => a.Id);
+
+			if (!string.IsNullOrEmpty(pageParams.Nome))
+				query = query.Where(a => a.Nome.ToUpper().Contains(pageParams.Nome.ToUpper()) ||
+									a.Sobrenome.ToUpper().Contains(pageParams.Nome.ToUpper()));
+
+			if (pageParams.Matricula > 0)
+				query = query.Where(a => a.Matricula == pageParams.Matricula);
+
+			if (pageParams.Ativo != null)
+				query = query.Where(a => a.Ativo == (pageParams.Ativo != 0));
+
+			//return await query.ToListAsync();
+			return await PageList<Aluno>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
 		}
 
 		public Aluno[] GetAllAlunos(bool includeProfessor = false)

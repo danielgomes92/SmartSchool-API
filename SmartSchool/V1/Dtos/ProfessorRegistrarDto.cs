@@ -4,7 +4,8 @@ namespace SmartSchool.V1.Dtos
 {
 	public class ProfessorRegistrarDto
     {
-        public int Registro { get; set; }
+		public int Id { get; set; }
+		public int Registro { get; set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         public string Telefone { get; set; }
